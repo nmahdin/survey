@@ -47,7 +47,7 @@ return [
             'database' => env('DB_DATABASE', 'suradlear2_nabline'),
             'username' => env('DB_USERNAME', 'radlear2_nabline'),
             'password' => env('DB_PASSWORD', 'mn@13861386'),
-            'unix_socket' => env('DB_SOCKET', 'mn@13861386'),
+            'unix_socket' => env('DB_SOCKET', ''),
             'charset' => env('DB_CHARSET', 'utf8mb4'),
             'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
             'prefix' => '',
