@@ -44,7 +44,7 @@ return [
             'url' => env('DB_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'suradlear2_nablinervey'),
+            'database' => env('DB_DATABASE', 'suradlear2_nabline'),
             'username' => env('DB_USERNAME', 'radlear2_nabline'),
             'password' => env('DB_PASSWORD', 'mn@13861386'),
             'unix_socket' => env('DB_SOCKET', 'mn@13861386'),
