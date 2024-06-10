@@ -5,13 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\AdminConfigs;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Admin2;
+//use App\Http\Controllers\Admin2;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+use \Illuminate\Contracts\View\Factory;
+use \Illuminate\Foundation\Application;
+use \Illuminate\Contracts\View\View;
 
 class Admin extends Controller
 {
-   public function index(){
+   public function index(): Factory|Application|View
+   {
        return view('admin.index');
    }
 
@@ -109,6 +113,11 @@ class Admin extends Controller
         } else {
             $on_off = 1;
         }
+        if ($request->app == null) {
+            $app = 0;
+        } else {
+            $app = 1;
+        }
         if ($request->admin_register == null) {
             $admin_register = 0;
         } else {
@@ -123,9 +132,19 @@ class Admin extends Controller
        AdminConfigs::where('name' , 'enable_start_text')->first()->update(['config' => $request->enable_start_text]);
        AdminConfigs::where('name' , 'start_btn')->first()->update(['config' => $request->start_btn]);
        AdminConfigs::where('name' , 'on_off')->first()->update(['config' => $on_off]);
+       AdminConfigs::where('name' , 'app')->first()->update(['config' => $app]);
        AdminConfigs::where('name' , 'admin_register')->first()->update(['config' => $admin_register]);
 
         return redirect(route('config.all'));
+    }
+
+    public function data_member() {
+       $members = User::where('admin' , 0)->count();
+//       dd($members);
+       return view('admin.members.data' ,
+           [
+               'count' => $members,
+           ]);
     }
 
 }

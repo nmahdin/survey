@@ -25,6 +25,8 @@ class User extends Authenticatable
         'n_false',
         'random',
         'score',
+        'full_admin',
+        'checker',
     ];
 
     /**
@@ -52,5 +54,9 @@ class User extends Authenticatable
 
     public function isAdmin(){
         return $this->admin;
+    }
+
+    public function isFullAdmin(){
+        return $this->full_admin;
     }
 }

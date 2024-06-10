@@ -89,6 +89,8 @@ $n = Questions::count()
                                     <div class="nk-tb-item nk-tb-head">
                                         <div class="nk-tb-col"><span class="sub-text">شماره سوال</span></div>
                                         <div class="nk-tb-col tb-col-lg"><span class="sub-text q-head">متن سوال</span>
+                                        <div class="nk-tb-col"><span class="sub-text q-head">تعداد پاسخ های درست</span>
+                                        <div class="nk-tb-col"><span class="sub-text q-head">تعداد پاسخ های نادرست</span>
                                         </div>
                                         <div class="nk-tb-col text-end"><span class="sub-text">اقدامات</span></div>
                                     </div>
@@ -102,6 +104,12 @@ $n = Questions::count()
                                             </div>
                                             <div class="nk-tb-col tb-col-lg">
                                                 <span class="sub-text">{{ $q->text }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-lg">
+                                                <span class="sub-text">{{ $q->n_true }}</span>
+                                            </div>
+                                            <div class="nk-tb-col tb-col-lg">
+                                                <span class="sub-text">{{ $q->n_false }}</span>
                                             </div>
                                             <div class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">

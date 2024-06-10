@@ -1,70 +1,78 @@
-@extends('layouts.main')
+@extends('layouts.member.q')
 
 @section('title')
-    ثبت نام ادمین
+    ثبت نام مدیر
 @endsection
 
-@section('body')
-    <div class="absolute-top-right d-lg-none p-3 p-sm-5">
-        <a href="#" class="toggle btn btn-white btn-icon btn-light" data-target="athPromo"><em class="icon ni ni-info"></em></a>
-    </div>
-    <div class="nk-block nk-block-middle nk-auth-body">
-        <div class="brand-logo pb-5">
-            <a href="#" class="logo-link">
-                <img class="logo-light logo-img logo-img-lg" src="/assets/images/logo.png" srcset="/assets/images/logo.png 2x" alt="لوگو">
-            </a>
+@section('content')
+
+    <div class="nk-block nk-block-middle">
+        <div class=" nk-split-stretch d-flex justify-center align-center flex-column">
+            <div class="wide-xs-fix">
+
+                <div class="card bg-white">
+                    <div class="card-header">ثبت نام مدیر</div>
+                    <div class="card-inner">
+                        <p>ثبت نام ادمین برای دسترسی به پنل ادمین</p>
+                        <form method="post" action="{{ route('admin.register') }}">
+                            @csrf
+                            <div class="form-group">
+                                <label class="form-label" for="name">نام</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control form-control-lg @error('name') error @enderror" name="name" value="{{ old('name') }}" id="name" required autofocus autocomplete="username" placeholder="نام وارد کنید">
+                                    @error('name')
+                                    <span id="fv-message-error" class="invalid">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="number">نام کاربری</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control form-control-lg @error('number') error @enderror" name="number" value="{{ old('number') }}" id="number" required autofocus autocomplete="username" placeholder="نام کابری وارد کنید">
+                                    @error('number')
+                                    <span id="fv-message-error" class="invalid">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="password">رمز عبور</label>
+                                <div class="form-control-wrap">
+                                    <input type="password" class="form-control form-control-lg @error('password') error @enderror" name="password" value="{{ old('password') }}"  id="password" required autofocus autocomplete="username" placeholder="رمز عبور وارد کنید">
+                                    @error('password')
+                                    <span id="fv-message-error" class="invalid">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="number">تکرار رمز عبور</label>
+                                <div class="form-control-wrap">
+                                    <input type="password" class="form-control form-control-lg @error('password_confirmation') error @enderror" name="password_confirmation"  id="password_confirmation" required autofocus autocomplete="username" placeholder="رمز عبور را مجدد تکرار کنید">
+                                    @error('password_confirmation')
+                                    <span id="fv-message-error" class="invalid">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <input type="text" style="display: none" name="full_admin" id="full_admin" value="@if(session('setup')) 1 @endif">
+
+                            <div class="form-group">
+                                <button class="btn btn-lg btn-primary btn-block">ثبت نام</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <div class="nk-block-head">
             <div class="nk-block-head-content">
-                <h5 class="nk-block-title">ثبت نام</h5>
+                <h5 class="nk-block-title"></h5>
                 <div class="nk-block-des">
-                    <p>ثبت نام ادمین برای دسترسی به پنل ادمین</p>
+
                 </div>
             </div>
         </div>
         <!-- .nk-block-head -->
-        <form method="post" action="{{ route('admin.register') }}">
-            @csrf
-            <div class="form-group">
-                <label class="form-label" for="name">نام</label>
-                <div class="form-control-wrap">
-                    <input type="text" class="form-control form-control-lg @error('name') error @enderror" name="name" value="{{ old('name') }}" id="name" required autofocus autocomplete="username" placeholder="نام وارد کنید">
-                    @error('name')
-                    <span id="fv-message-error" class="invalid">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="number">نام کاربری</label>
-                <div class="form-control-wrap">
-                    <input type="text" class="form-control form-control-lg @error('number') error @enderror" name="number" value="{{ old('number') }}" id="number" required autofocus autocomplete="username" placeholder="نام کابری وارد کنید">
-                    @error('number')
-                    <span id="fv-message-error" class="invalid">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="password">رمز عبور</label>
-                <div class="form-control-wrap">
-                    <input type="password" class="form-control form-control-lg @error('password') error @enderror" name="password" value="{{ old('password') }}"  id="password" required autofocus autocomplete="username" placeholder="رمز عبور وارد کنید">
-                    @error('password')
-                    <span id="fv-message-error" class="invalid">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="form-label" for="number">تکرار رمز عبور</label>
-                <div class="form-control-wrap">
-                    <input type="password" class="form-control form-control-lg @error('password_confirmation') error @enderror" name="password_confirmation" {{ old('password_confirmation') }} id="password_confirmation" required autofocus autocomplete="username" placeholder="رمز عبور را مجدد تکرار کنید">
-                    @error('password_confirmation')
-                    <span id="fv-message-error" class="invalid">{{ $message }}</span>
-                    @enderror
-                </div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-lg btn-primary btn-block">ثبت نام</button>
-            </div>
-        </form>
+
         <!-- form -->
     </div>
     <!-- .nk-block -->

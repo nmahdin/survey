@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class Admin
+class FullAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,14 +16,13 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-            if (AdminConfigs::all()) {
-            if ($request->user()->isAdmin()) {
+        if (AdminConfigs::all()) {
+            if ($request->user()->isFullAdmin()) {
                 return $next($request);
             }
-            return redirect('/');
+            return redirect(route('ban'));
         } else {
             return redirect(route('setup'));
         }
-
     }
 }

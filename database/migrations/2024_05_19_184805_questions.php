@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('g3');
             $table->string('g4');
             $table->string('true');
+            $table->string('n_true')->default(0);
+            $table->string('n_false')->default(0);
             $table->timestamps();
         });
     }

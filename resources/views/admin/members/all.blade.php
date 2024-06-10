@@ -6,7 +6,7 @@
 
 <?php
 use \App\Models\User;
-$n = User::count()
+$n = User::where('admin' , 0)->count()
 
 ?>
 
@@ -30,9 +30,14 @@ $n = User::count()
                             {{--                                </span>--}}
 
                             {{--                            @endif--}}
-                            <div class="nk-block-des text-soft">
-                                <p>در مجموع {{ $n }} شرکت کننده وجود دارد</p>
-                            </div>
+                            @if($n !== 0)
+
+                                <div class="nk-block-des text-soft">
+                                    <p>در مجموع {{ $n }} شرکت کننده وجود دارد</p>
+                                </div>
+
+                            @endif
+
                         </div>
                         <!-- .nk-block-head-content -->
                         <div class="nk-block-head-content">

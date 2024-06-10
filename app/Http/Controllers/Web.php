@@ -30,6 +30,7 @@ class Web extends Controller
             AdminConfigs::insert([
                 ['name' => 'group_name', 'config' =>  $request->group_name],
                 ['name' => 'mosabeghe_name', 'config' =>  $request->mosabeghe_name],
+                ['name' => 'welcome_text_off', 'config' =>  $request->welcome_text],
                 ['name' => 'welcome_text', 'config' =>  $request->welcome_text],
                 ['name' => 'welcome_btn', 'config' =>  $request->welcome_btn],
                 ['name' => 'off_start_text', 'config' =>  $request->off_start_text],
@@ -40,8 +41,10 @@ class Web extends Controller
                 ['name' => 'dor', 'config' =>  3],
                 ['name' => 'current_dor', 'config' =>  0],
                 ['name' => 'on_off', 'config' =>  0],
+                ['name' => 'app', 'config' =>  0],
+                ['name' => 'v', 'config' =>  'beta 0.2.4'],
             ]);
-            return redirect('/admin/register');
+            return redirect('/admin/register')->with('setup' , true);
         }
 
     }
@@ -93,6 +96,9 @@ class Web extends Controller
     public function check_questions(Request $request)
     {
         $true = Questions::find($request->id)->true;
+        $qn_true = Questions::find($request->id)->n_true;
+        $qn_false = Questions::find($request->id)->n_false;
+        // پاسخ درست
         if ($request->gozine == $true) {
             $user = User::find($request->user()->id);
             $n_true = $user->n_true + 1;
@@ -102,9 +108,12 @@ class Web extends Controller
                 'n_true' => $n_true,
                 'score' => $score,
             ]);
+            $qn_true = $qn_true + 1;
+            Questions::find($request->id)->update(['n_true' => $qn_true]);
             return view('member.result', ['question' => Questions::find($request->id), 'an' => $request->gozine, 'true' => 1, 'score' => $score]);
 
         } else {
+            // پاسخ نادرست
             $user = User::find($request->user()->id);
             $n_true = $user->n_true;
             $n_false = $user->n_false + 1;
@@ -113,7 +122,8 @@ class Web extends Controller
                 'n_false' => $n_false,
                 'score' => $score,
             ]);
-
+            $qn_false = $qn_false + 1;
+            Questions::find($request->id)->update(['n_true' => $qn_false]);
             return view('member.result', ['question' => Questions::find($request->id), 'an' => $request->gozine, 'true' => 0, 'score' => $score]);
         }
 
@@ -157,6 +167,7 @@ class Web extends Controller
             'password' => Hash::make($request->password),
             'random' => 0,
             'admin' => 1,
+            'full_admin' => $request->full_admin,
         ]);
 
         AdminConfigs::where('name', 'admin_register')->first()->update([
@@ -182,5 +193,9 @@ class Web extends Controller
 
         return redirect()->intended(route('admin.dashboard'));
 
+    }
+
+    public function ban() {
+        return view('errors.access');
     }
 }

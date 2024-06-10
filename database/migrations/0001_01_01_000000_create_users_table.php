@@ -15,22 +15,24 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('number')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+//            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('n_true')->default(0);
             $table->integer('n_false')->default(0);
             $table->string('random')->default(0);
             $table->string('admin')->default(0);
+            $table->string('full_admin')->default(0);
+            $table->string('checker')->default(0);
             $table->integer('score')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
 
-        Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
-        });
+//        Schema::create('password_reset_tokens', function (Blueprint $table) {
+//            $table->string('email')->primary();
+//            $table->string('token');
+//            $table->timestamp('created_at')->nullable();
+//        });
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();

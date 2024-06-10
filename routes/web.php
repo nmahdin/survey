@@ -38,4 +38,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/access-ban' , [Web::class , 'ban'])->name('ban');
 require __DIR__.'/auth.php';

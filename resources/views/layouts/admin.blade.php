@@ -49,15 +49,15 @@
                             <li class="nk-menu-item has-sub">
                                 <a href="#" class="nk-menu-link nk-menu-toggle">
                                     <span class="nk-menu-icon"><em class="icon ni ni-line-chart"></em></span>
-                                    <span class="nk-menu-text">آمار شرکت کنندگاه</span>
+                                    <span class="nk-menu-text">آمار شرکت کنندگان</span>
                                 </a>
                                 <ul class="nk-menu-sub">
                                     <li class="nk-menu-item">
                                         <a href="{{ route('members.all') }}" class="nk-menu-link"><span
-                                                class="nk-menu-text">مشاهده لیست شرکت کنندگان</span></a>
+                                                class="nk-menu-text">لیست شرکت کنندگان</span></a>
                                     </li>
                                     <li class="nk-menu-item">
-                                        <a href="#" class="nk-menu-link"><span
+                                        <a href="{{ route('members.data') }}" class="nk-menu-link"><span
                                                 class="nk-menu-text">آمار کلی</span></a>
                                     </li>
                                 </ul>
@@ -111,6 +111,7 @@
                                 </a>
                             </li>
                             <!-- .nk-menu-item -->
+                            @if(\Illuminate\Support\Facades\Auth::user()->full_admin)
                             <li class="nk-menu-heading">
                                 <h6 class="overline-title text-primary-alt">مدیریت</h6>
                             </li>
@@ -136,6 +137,8 @@
                                 </ul>
                                 <!-- .nk-menu-sub -->
                             </li>
+                            @endif
+
                             <!-- .nk-menu-item -->
                         </ul>
                         <!-- .nk-menu -->
@@ -228,22 +231,16 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @if(\Illuminate\Support\Facades\Auth::user()->full_admin)
                                         <div class="dropdown-inner">
                                             <ul class="link-list">
                                                 <li>
                                                     <a href="{{ route('config.user' , ['user' => Illuminate\Support\Facades\Auth::user()->id]) }}"><em class="icon ni ni-user-alt"></em><span>مشاهده تنظیمات ادمین</span></a>
                                                 </li>
-                                                {{--                                                <li>--}}
-                                                {{--                                                    <a href="html/user-profile-setting.html"><em class="icon ni ni-setting-alt"></em><span>تنظیمات حساب</span></a>--}}
-                                                {{--                                                </li>--}}
-                                                {{--                                                <li>--}}
-                                                {{--                                                    <a href="html/user-profile-activity.html"><em class="icon ni ni-activity-alt"></em><span>فعالیت ورود</span></a>--}}
-                                                {{--                                                </li>--}}
-                                                {{--                                                <li>--}}
-                                                {{--                                                    <a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>حالت تاریک</span></a>--}}
-                                                {{--                                                </li>--}}
                                             </ul>
                                         </div>
+                                        @endif
+
                                         <div class="dropdown-inner">
                                             <ul class="link-list">
                                                 <li>

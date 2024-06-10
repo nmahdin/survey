@@ -71,6 +71,7 @@ class Kernel implements KernelContract
      */
     protected $routeMiddleware = [
         'auth.admin' => \App\Http\Middleware\Admin::class,
+        'full.admin' => \App\Http\Middleware\FullAdmin::class,
     ];
 
     /**
