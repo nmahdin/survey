@@ -22,11 +22,9 @@
 
                             {{--                            @endif--}}
                             @if($count !== 0)
-
                                 <div class="nk-block-des text-soft">
                                     <p>در مجموع {{ $count }} شرکت کننده وجود دارد</p>
                                 </div>
-
                             @endif
 
                         </div>
