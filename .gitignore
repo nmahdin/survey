@@ -2,9 +2,10 @@
 /node_modules
 /public/build
 /public/hot
-
+/config/database.php
 /storage/*.key
 
+.env
 .env.backup
 .env.production
 .phpactor.json
