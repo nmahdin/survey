@@ -99,12 +99,12 @@ function config2($con)
 
                             <span>
                                 <span class="nk-menu-icon text-primary"><em class="icon ni ni-bookmark-fill"></em></span>
-                                <span class="nk-menu-text"><h5 class="text-primary fw-normal">صفحه خوش آمد گویی مسابقه</h5></span>
+                                <span class="nk-menu-text"><h5 class="text-primary fw-normal">صفحه خوش آمد گویی مسابقه قبل از ورود</h5></span>
                             </span>
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="welcome_text" class="form-label">متن خوش آمد گویی</label>
-                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>
+{{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
                             <div class="col-lg-8">
@@ -123,8 +123,28 @@ function config2($con)
 
                             <div class="col-lg-3">
                                 <div class="form-group">
+                                    <label for="welcome_text_off" class="form-label">متن موقع خاموش بودن برنامه</label>
+                                    {{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="form-group">
+                                    <div class="form-control-wrap number-spinner-wrap">
+                                        <input id="welcome_text_off" type="text"
+                                               class="form-control @error('welcome_text_off') error @enderror "
+                                               placeholder="برنامه فعال نمی باشد!" value="{{ config2('welcome_text_off') }}"
+                                               name="welcome_text_off">
+                                        @error('welcome_text_off')
+                                        <span id="fv-message-error" class="invalid">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
                                     <label for="welcome_btn" class="form-label">متن دکمه برای ورود به مسابقه</label>
-                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>
+{{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
                             <div class="col-lg-8">
@@ -132,7 +152,7 @@ function config2($con)
                                     <div class="form-control-wrap number-spinner-wrap">
                                         <input id="welcome_btn" type="text"
                                                class="form-control @error('welcome_btn') error @enderror "
-                                               placeholder="نام مسابقه" value="{{ config2('welcome_btn') }}"
+                                               placeholder="ورود به برنامه" value="{{ config2('welcome_btn') }}"
                                                name="welcome_btn">
                                         @error('welcome_btn')
                                         <span id="fv-message-error" class="invalid">{{ $message }}</span>
@@ -140,6 +160,7 @@ function config2($con)
                                     </div>
                                 </div>
                             </div>
+
 
                             <br>
 
@@ -252,7 +273,7 @@ function config2($con)
                                             type="checkbox"
                                                class="custom-control-input"
                                                id="on_off" name="on_off">
-                                        <label class="custom-control-label" for="on_off">فعال / غیر فعال</label>
+                                        <label class="custom-control-label" for="on_off">غیر فعال / فعال</label>
                                     </div>
                                 </div>
                             </div>
