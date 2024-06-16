@@ -29,13 +29,17 @@
                     </div>
                 @else
                     <div class="card text-white bg-danger">
-                        <div class="card-header">به مسابقه خوش آمدید.</div>
                         <div class="card-inner">
-                            <h5 class="card-title text-white"></h5>
                             <p class="card-text ">
                                 <em class="icon ni ni-cross-circle"></em>
                                 لطفاً منتظر بمانید، مسابقه هنوز شروع نشده است.
                             </p>
+                        </div>
+                    </div>
+                    <div class="card bg-purple-dim">
+                        <div class="card-inner">
+                            <a class="link-indigo" style="margin: 5px" href="{{ route('welcome3') }}">
+                                <em class="icon ni ni-reload"></em><span>بارگذاری مجدد</span></a>
                         </div>
                     </div>
                     <div class="card bg-danger-dim">
@@ -50,6 +54,7 @@
                             </form>
                         </div>
                     </div>
+
                 @endif
             </div>
         </div>

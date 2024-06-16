@@ -110,10 +110,10 @@ function config2($con)
                             <div class="col-lg-8">
                                 <div class="form-group">
                                     <div class="form-control-wrap number-spinner-wrap">
-                                        <textarea id="welcome_text" type="text"
+                                        <input id="welcome_text" type="text"
                                                class="form-control @error('welcome_text') error @enderror "
                                                placeholder="نام مسابقه" value="{{ config2('welcome_text') }}"
-                                                  name="welcome_text"></textarea>
+                                               name="welcome_text">
                                         @error('welcome_text')
                                         <span id="fv-message-error" class="invalid">{{ $message }}</span>
                                         @enderror
@@ -130,9 +130,10 @@ function config2($con)
                             <div class="col-lg-8">
                                 <div class="form-group">
                                     <div class="form-control-wrap number-spinner-wrap">
-                                        <textarea id="welcome_text_off" type="text"
+                                        <input id="welcome_text_off" type="text"
                                                class="form-control @error('welcome_text_off') error @enderror "
-                                               placeholder="برنامه فعال نمی باشد!" value="{{ config2('welcome_text_off') }}" name="welcome_text_off"></textarea>
+                                               placeholder="برنامه فعال نمی باشد!" value="{{ config2('welcome_text_off') }}"
+                                               name="welcome_text_off">
                                         @error('welcome_text_off')
                                         <span id="fv-message-error" class="invalid">{{ $message }}</span>
                                         @enderror
