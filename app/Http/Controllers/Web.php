@@ -42,6 +42,7 @@ class Web extends Controller
                 ['name' => 'current_dor', 'config' =>  0],
                 ['name' => 'on_off', 'config' =>  0],
                 ['name' => 'app', 'config' =>  0],
+                // TODO نسخه
                 ['name' => 'v', 'config' =>  'beta 0.2.4'],
             ]);
             return redirect('/admin/register')->with('setup' , true);

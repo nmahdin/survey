@@ -21,7 +21,7 @@
                     </div>
                     <div class="card text-teal bg-teal-dim" style="text-align: center">
                         <div class="card-inner">
-                            <a href="{{ route('start') }}" class="text-teal">
+                            <a href="{{ route('enter') }}" class="text-teal">
                                 شروع مسابقه
                                 <em class="icon ni ni-back-ios icon-m-left"></em>
                             </a>

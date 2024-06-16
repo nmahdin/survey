@@ -43,6 +43,18 @@ class Admin extends Controller
     }
 
     public function config_user(Request $request) {
+       if (User::findOrFail($request->user)->admin) {
+           if (Auth::user()->full_admin){
+               return view('admin.config.user' ,[
+                   'user' => User::findOrFail($request->user),
+               ] );
+           } elseif (Auth::user()->id == $request->user) {
+               return view('admin.config.user' ,[
+                   'user' => User::findOrFail($request->user),
+               ] );
+           }
+           return redirect(route('ban'));
+       }
       return view('admin.config.user' ,[
           'user' => User::findOrFail($request->user),
       ] );

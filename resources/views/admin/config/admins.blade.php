@@ -5,8 +5,8 @@
 @endsection
 
 <?php
-use \App\Models\Questions;
-$n = Questions::count()
+use \App\Models\User;
+$n = User::where('admin', 1)->count();
 
 ?>
 
@@ -34,7 +34,7 @@ $n = Questions::count()
                             <p>در مجموع {{ $n }} ادمین وجود دارد</p>
                             @if(session('status'))
                                 <div class="alert alert-fill alert-success alert-icon">
-                                    <em class="icon ni ni-check-fill-c"></em> سوال با موفقیت حذف شد!
+                                    <em class="icon ni ni-check-fill-c"></em> مدیریت با موفقیت حذف شد!
                                 </div>
                             @endif
                         </div>
@@ -71,31 +71,17 @@ $n = Questions::count()
                         <div class="card-inner p-0">
                             <div class="nk-tb-list nk-tb-ulist">
 
-                                @if($n == 0)
-
-                                    <div class="alert alert-fill alert-warning alert-icon">
-                                        <em class="icon ni ni-alert-circle"></em>
-
-                                        <strong>سوالی وجود ندارد</strong>
-
-                                        <a href="{{ route('question.creat') }}" class="alert-link">ایجاد سوال</a>
-
+                                <div class="nk-tb-item nk-tb-head">
+                                    <div class="nk-tb-col"><span class="sub-text">آیدی</span></div>
+                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text q-head">نام</span></div>
+                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text q-head">نام کاربری</span>
                                     </div>
-
-                                @endif
-
-                                @if($n !== 0)
-
-                                    <div class="nk-tb-item nk-tb-head">
-                                        <div class="nk-tb-col"><span class="sub-text">آیدی</span></div>
-                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text q-head">نام</span></div>
-                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text q-head">نام کاربری</span></div>
-                                        <div class="nk-tb-col text-end"><span class="sub-text">اقدامات</span></div>
-                                    </div>
-                                    @foreach($users as $u)
-                                            @if($u->admin)
-                                            <!-- .nk-tb-item -->
-                                            <div class="nk-tb-item">
+                                    <div class="nk-tb-col text-end"><span class="sub-text">اقدامات</span></div>
+                                </div>
+                            @foreach($users as $u)
+                                @if($u->admin)
+                                    <!-- .nk-tb-item -->
+                                        <div class="nk-tb-item">
 
                                             <div class="nk-tb-col col-n">
                                                 <span class="sub-text">{{ $u->id }}</span>
@@ -141,60 +127,58 @@ $n = Questions::count()
                                                 </ul>
                                             </div>
                                         </div>
-                                            <!-- .nk-tb-item -->
-                                        @endif
-                                    @endforeach
+                                        <!-- .nk-tb-item -->
+                                    @endif
+                                @endforeach
 
-                                    @if($users->hasPages())
-                                        <div class="row align-items-center">
-                                            <div class="col-7 col-sm-12 col-md-9">
-                                                <div class="dataTables_paginate paging_simple_numbers"
-                                                     id="DataTables_Table_2_paginate">
-                                                    <ul class="pagination">
-                                                        <li class="paginate_button page-item previous"
-                                                            id="DataTables_Table_2_previous"><a
-                                                                href="{{ $users->previousPageUrl() }}"
-                                                                aria-controls="DataTables_Table_2"
-                                                                role="link"
-                                                                data-dt-idx="previous"
-                                                                tabindex="0"
-                                                                class="page-link">قبلی</a>
+                                @if($users->hasPages())
+                                    <div class="row align-items-center">
+                                        <div class="col-7 col-sm-12 col-md-9">
+                                            <div class="dataTables_paginate paging_simple_numbers"
+                                                 id="DataTables_Table_2_paginate">
+                                                <ul class="pagination">
+                                                    <li class="paginate_button page-item previous"
+                                                        id="DataTables_Table_2_previous"><a
+                                                            href="{{ $users->previousPageUrl() }}"
+                                                            aria-controls="DataTables_Table_2"
+                                                            role="link"
+                                                            data-dt-idx="previous"
+                                                            tabindex="0"
+                                                            class="page-link">قبلی</a>
+                                                    </li>
+
+                                                    @for ($i = 1; $i <= ceil($n / 20); $i++)
+                                                        <li class="paginate_button page-item @if($users->currentPage() == $i) active @endif">
+                                                            <a href="{{ $questions->url($i) }}"
+                                                               aria-controls="DataTables_Table_2"
+                                                               role="link"
+                                                               data-dt-idx="$i"
+                                                               tabindex="0"
+                                                               class="page-link">{{$i}}</a>
                                                         </li>
 
-                                                        @for ($i = 1; $i <= ceil($n / 20); $i++)
-                                                            <li class="paginate_button page-item @if($users->currentPage() == $i) active @endif">
-                                                                <a href="{{ $questions->url($i) }}"
-                                                                   aria-controls="DataTables_Table_2"
-                                                                   role="link"
-                                                                   data-dt-idx="$i"
-                                                                   tabindex="0"
-                                                                   class="page-link">{{$i}}</a>
-                                                            </li>
-
-                                                        @endfor
+                                                    @endfor
 
 
-                                                        <li class="paginate_button page-item next"
-                                                            id="DataTables_Table_2_next"><a
-                                                                href="{{ $users->nextPageUrl() }}"
-                                                                aria-controls="DataTables_Table_2"
-                                                                role="link" data-dt-idx="next"
-                                                                tabindex="0" class="page-link">بعدی</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-sm-12 col-md-3 text-start text-md-end">
-                                                <div class="dataTables_info" id="DataTables_Table_2_info" role="status"
-                                                     aria-live="polite">
-
-                                                </div>
+                                                    <li class="paginate_button page-item next"
+                                                        id="DataTables_Table_2_next"><a
+                                                            href="{{ $users->nextPageUrl() }}"
+                                                            aria-controls="DataTables_Table_2"
+                                                            role="link" data-dt-idx="next"
+                                                            tabindex="0" class="page-link">بعدی</a>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
-                                    @endif
+                                        <div class="col-5 col-sm-12 col-md-3 text-start text-md-end">
+                                            <div class="dataTables_info" id="DataTables_Table_2_info" role="status"
+                                                 aria-live="polite">
 
-
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endif
+
 
                             </div>
                             <!-- .nk-tb-list -->

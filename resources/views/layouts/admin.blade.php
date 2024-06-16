@@ -231,7 +231,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        @if(\Illuminate\Support\Facades\Auth::user()->full_admin)
                                         <div class="dropdown-inner">
                                             <ul class="link-list">
                                                 <li>
@@ -239,7 +238,6 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        @endif
 
                                         <div class="dropdown-inner">
                                             <ul class="link-list">
