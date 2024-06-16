@@ -27,6 +27,8 @@ class User extends Authenticatable
         'score',
         'full_admin',
         'checker',
+        'count',
+        'dor',
     ];
 
     /**

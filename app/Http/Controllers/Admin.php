@@ -20,8 +20,9 @@ class Admin extends Controller
    }
 
     public function config_question() {
-        $dor = AdminConfigs::where('name', 'dor')->first();
-        return view('admin.config.question' , ['dor' => $dor->config]);
+       $on_off = AdminConfigs::where('name' , 'on_off')->first();
+       $dor = AdminConfigs::where('name', 'dor')->first();
+        return view('admin.config.question' , ['dor' => $dor->config , 'on_off' => $on_off]);
     }
 
     public function config_question_update(Request $request) {
@@ -64,12 +65,19 @@ class Admin extends Controller
        $request->validate([
            'name' => ['required', 'string', 'max:255'],
            'number' => ['required', 'string', 'lowercase', 'max:255', Rule::unique('Users')->ignore($request->id)],
+           'level' => ['required']
        ], [
            'number.unique' => ' نام کاربری تکراری است.'
        ]);
+       if ($request->level == 'full_admin') {
+           $full_admin = 1;
+       } else {
+           $full_admin = 0;
+       }
        User::find($request->id)->update([
            'name' => $request->name,
            'number' => $request->number,
+           'full_admin' => $full_admin,
        ]);
        return redirect(route('config.user' , ['user' => $request->id]))->with('status' , true);
     }

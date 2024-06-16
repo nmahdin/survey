@@ -12,10 +12,19 @@
                 <div class="wide-xs-fix">
 
                     <div class="card bg-orange-dim text-orange">
-                        <div class="card-header">اتمام سوالات</div>
+{{--                        <div class="card-header">اتمام سوالات</div>--}}
                         <div class="card-inner">
-                            <h5 class="card-title">   <em class="icon ni ni-check" style="margin-left: 10px; font-size: 25px"></em>شما به تمام سوالات پاسخ داده اید!
-                            </h5>
+                            @if($status == 'end')
+                                <h5 class="card-title">   <em class="icon ni ni-check" style="margin-left: 10px; font-size: 25px"></em>
+                                    شما به تمام سوالات پاسخ داده اید!
+                                </h5>
+                            @else
+                                <h5 class="card-title">   <em class="icon ni ni-check" style="margin-left: 10px; font-size: 25px"></em>
+                                    شما به تمام سوالات دور {{$status}} پاسخ داده اید!
+                                </h5>
+                                <p>منتظر دور بعدی سوالات باشید.</p>
+                            @endif
+
                             <br>
                             <h6 class=""><em class="icon ni ni ni-info-fill" style="margin-left: 10px; font-size: 17px"></em>نتایج شما:</h6>
                             <br>
@@ -24,6 +33,12 @@
                                 <h5 class="bg-danger text-white " style="padding: 8px; border-radius: 7px; width: auto;  margin-bottom: 17px">تعداد پاسخ های نادرست: {{ $user->n_false }}</h5>
                                 <h5 class="text-white bg-info" style="padding: 8px; border-radius: 7px; width: auto;">امتیاز شما: {{ $user->score }}</h5>
                             </div>
+                        </div>
+                    </div>
+                    <div class="card bg-purple-dim">
+                        <div class="card-inner">
+                            <a class="link-indigo" style="margin: 5px" href="{{ route('show.questions') }}">
+                                <em class="icon ni ni-reload"></em><span>بارگذاری مجدد</span></a>
                         </div>
                     </div>
                     <div class="card bg-info-dim">

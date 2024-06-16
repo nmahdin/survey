@@ -21,8 +21,6 @@ Route::prefix('/config')->middleware('full.admin')->group(function () {
     Route::post('/questions' , [Admin::class , 'config_question_update']);
     Route::get('/all' , [Admin::class , 'config_all'])->name('config.all');
     Route::post('/all' , [Admin::class , 'config_all_update']);
-//    Route::get('/user' , [Admin::class , 'config_user'])->name('config.user');
-//    Route::post('/user' , [Admin::class , 'config_user_post']);
     Route::get('/admins' , [Admin::class , 'config_show_admins'])->name('config.admins');
     Route::delete('/d/{user}' , [Admin::class , 'delete_admin']);
 });

@@ -79,6 +79,11 @@ class Web extends Controller
     public function show_questions(Request $request)
     {
         if ($request->user()->random != null) {
+            $current_dor = AdminConfigs::where('name' , 'current_dor')->first()->config;
+            $user_dor = $request->user()->dor;
+            if ($current_dor == $user_dor) {
+                return view('member.end', ['user' => $request->user() , 'status' => $user_dor]);
+            }
             $qustions = $request->user()->random;
             $q = explode('.', $qustions);
             $new_qustions = explode('.', $qustions);
@@ -89,13 +94,21 @@ class Web extends Controller
             $q = Questions::find($q[0]);
             return view('member.showQuestions', ['question' => $q]);
         } else {
-            return view('member.end', ['user' => $request->user()]);
+            return view('member.end', ['user' => $request->user() , 'status' => 'end']);
         }
 
     }
 
     public function check_questions(Request $request)
     {
+        $current_dor = AdminConfigs::where('name' , 'current_dor')->first()->config;
+        $q_dor = AdminConfigs::where('name' , 'dor')->first()->config;
+        $user_dor = $request->user()->dor;
+        $user_count = $request->user()->count + 1;
+        if ($user_count == $q_dor) {
+            $user_dor = $current_dor;
+            $user_count = 0;
+        }
         $true = Questions::find($request->id)->true;
         $qn_true = Questions::find($request->id)->n_true;
         $qn_false = Questions::find($request->id)->n_false;
@@ -104,10 +117,12 @@ class Web extends Controller
             $user = User::find($request->user()->id);
             $n_true = $user->n_true + 1;
             $n_false = $user->n_false;
-            $score = ($n_true - ($n_false / 2)) * 10;
+            $score = ($n_true - ($n_false / 4)) * 10;
             User::find($request->user()->id)->update([
                 'n_true' => $n_true,
                 'score' => $score,
+                'dor' => $user_dor,
+                'count' => $user_count,
             ]);
             $qn_true = $qn_true + 1;
             Questions::find($request->id)->update(['n_true' => $qn_true]);
@@ -118,10 +133,12 @@ class Web extends Controller
             $user = User::find($request->user()->id);
             $n_true = $user->n_true;
             $n_false = $user->n_false + 1;
-            $score = ($n_true - ($n_false / 2)) * 10;
+            $score = ($n_true - ($n_false / 4)) * 10;
             User::find($request->user()->id)->update([
                 'n_false' => $n_false,
                 'score' => $score,
+                'dor' => $user_dor,
+                'count' => $user_count,
             ]);
             $qn_false = $qn_false + 1;
             Questions::find($request->id)->update(['n_true' => $qn_false]);

@@ -13,7 +13,7 @@ class QuestionsSeeder extends Seeder
      */
     public function run(): void
     {
-        foreach (range(1, 10) as $number) {
+        foreach (range(1, 40) as $number) {
             DB::table('questions')->insert([
                 'number' => "$number",
                 'text' => "سوال شماره $number",

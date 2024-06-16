@@ -72,26 +72,20 @@ $n = Questions::count()
                             <div class="nk-tb-list nk-tb-ulist">
 
                                 @if($n == 0)
-
                                     <div class="alert alert-fill alert-warning alert-icon">
                                         <em class="icon ni ni-alert-circle"></em>
-
                                         <strong>سوالی وجود ندارد</strong>
-
                                         <a href="{{ route('question.creat') }}" class="alert-link">ایجاد سوال</a>
-
                                     </div>
-
                                 @endif
 
                                 @if($n !== 0)
 
                                     <div class="nk-tb-item nk-tb-head">
                                         <div class="nk-tb-col"><span class="sub-text">شماره سوال</span></div>
-                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text q-head">متن سوال</span>
-                                        <div class="nk-tb-col"><span class="sub-text q-head">تعداد پاسخ های درست</span>
-                                        <div class="nk-tb-col"><span class="sub-text q-head">تعداد پاسخ های نادرست</span>
-                                        </div>
+                                        <div class="nk-tb-col tb-col-lg"><span class="sub-text q-head">متن سوال</span></div>
+                                        <div class="nk-tb-col"><span class="sub-text q-head">تعداد پاسخ های درست</span></div>
+                                        <div class="nk-tb-col"><span class="sub-text q-head">تعداد پاسخ های نادرست</span></div>
                                         <div class="nk-tb-col text-end"><span class="sub-text">اقدامات</span></div>
                                     </div>
                                     @foreach($questions as $q)
@@ -151,7 +145,7 @@ $n = Questions::count()
 
                                     @if($questions->hasPages())
                                         <div class="row align-items-center">
-                                            <div class="col-7 col-sm-12 col-md-9">
+                                            <div class="col-7 col-sm-12 col-md-9 m-2">
                                                 <div class="dataTables_paginate paging_simple_numbers"
                                                      id="DataTables_Table_2_paginate">
                                                     <ul class="pagination">

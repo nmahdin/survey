@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('full_admin')->default(0);
             $table->string('checker')->default(0);
             $table->integer('score')->default(0);
+            $table->integer('dor')->default(0);
+            $table->integer('count')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });
