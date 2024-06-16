@@ -12,17 +12,28 @@
             <div style="max-width: 540px;" class="nk-block nk-block-middle nk-auth-body ml-0">
 
                 @if($start)
-                    <div class="card text-white bg-teal">
-                        <div class="card-header text-white">به مسابقه خوش آمدید.</div>
+                    <div class="card bg-gray-dim text-gray">
                         <div class="card-inner">
-                            <h5 class="card-title text-white"></h5>
-                            <p class="card-text ">متن قبل شروع مسابه</p>
+                            <p class="card-text ">
+                                نام:
+                                <strong class="fw-bold">{{ \Illuminate\Support\Facades\Auth::user()->name }}</strong>
+                            </p>
+                            <p class="card-text ">
+                                شماره موبایل:
+                                <strong class="fw-bold">{{ \Illuminate\Support\Facades\Auth::user()->number }}</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-teal">
+                        <div class="card-header text-white">{{ \App\Models\AdminConfigs::where('name' , 'enable_start_title')->first()->config }}</div>
+                        <div class="card-inner">
+                            <p class="card-text ">{{ \App\Models\AdminConfigs::where('name' , 'enable_start_text')->first()->config }}</p>
                         </div>
                     </div>
                     <div class="card text-teal bg-teal-dim" style="text-align: center">
                         <div class="card-inner">
-                            <a href="{{ route('enter') }}" class="text-teal">
-                                شروع مسابقه
+                            <a href="{{ route('show.questions') }}" class="text-teal">
+                                {{ \App\Models\AdminConfigs::where('name' , 'start_btn')->first()->config }}
                                 <em class="icon ni ni-back-ios icon-m-left"></em>
                             </a>
                         </div>
@@ -32,7 +43,7 @@
                         <div class="card-inner">
                             <p class="card-text ">
                                 <em class="icon ni ni-cross-circle"></em>
-                                لطفاً منتظر بمانید، مسابقه هنوز شروع نشده است.
+                                {{ \App\Models\AdminConfigs::where('name' , 'off_start_text')->first()->config }}
                             </p>
                         </div>
                     </div>

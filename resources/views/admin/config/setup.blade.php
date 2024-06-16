@@ -171,8 +171,8 @@ function config2($con)
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="off_start_text" class="form-label">متن صفحه شروع در حالی که سوالات فعال
-                                        نیستند.</label>
-                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>
+                                        نیستند:</label>
+{{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
                             <div class="col-lg-8">
@@ -192,8 +192,8 @@ function config2($con)
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <label for="enable_start_title" class="form-label">عنوان باکس صفحه شروع
-                                        مسابقه</label>
-                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>
+                                        مسابقه:</label>
+{{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
                             <div class="col-lg-8">
@@ -212,8 +212,8 @@ function config2($con)
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="enable_start_text" class="form-label">متن صفحه شروع</label>
-                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>
+                                    <label for="enable_start_text" class="form-label">متن صفحه شروع:</label>
+{{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
                             <div class="col-lg-8">
@@ -232,8 +232,8 @@ function config2($con)
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="start_btn" class="form-label">متن دکمه شروع</label>
-                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>
+                                    <label for="start_btn" class="form-label">متن دکمه شروع:</label>
+{{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
                             <div class="col-lg-8">

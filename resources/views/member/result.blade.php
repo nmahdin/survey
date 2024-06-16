@@ -5,10 +5,6 @@
 @endsection
 
 <?php
-// function t() {
-//    echo 'fghfhf';
-//}
-
     if ($true) {
         function true($g , $an , $t){
             if ($g == $an) {
@@ -50,16 +46,24 @@ if ($true) {
 }
 ?>
 
-
-
-
 @section('content')
     <div class="nk-content">
         <div class="nk-split nk-split-page nk-split-lg">
             <!-- .nk-split-content -->
             <div class="nk-split-content nk-split-stretch bg-white p-5 d-flex justify-center align-center flex-column">
                 <div class="wide-xs-fix">
-
+                    <div class="card bg-gray-dim text-gray">
+                        <div class="card-inner">
+                            <p class="card-text ">
+                                نام:
+                                <strong class="fw-bold">{{ \Illuminate\Support\Facades\Auth::user()->name }}</strong>
+                            </p>
+                            <p class="card-text ">
+                                شماره موبایل:
+                                <strong class="fw-bold">{{ \Illuminate\Support\Facades\Auth::user()->number }}</strong>
+                            </p>
+                        </div>
+                    </div>
                     <div class="card bg-lighter">
                         <div class="card-header">نتیجه: <?php if($true) { echo 'پاسخ شما درست بود';}else {echo 'پاسخ شما نادرست بود'; } ?></div>
                         <div class="card-inner">
