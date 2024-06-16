@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\AdminConfigs;
+use App\Models\Questions;
+use App\Models\HQuestions;
 use App\Models\User;
 use Illuminate\Http\Request;
 //use App\Http\Controllers\Admin2;
@@ -162,10 +164,19 @@ class Admin extends Controller
 
     public function data_member() {
        $members = User::where('admin' , 0)->count();
-//       dd($members);
+       $users = User::where('admin' , 0)->orderByDesc('score')->Paginate(10);;
+       $qcount = Questions::count();
+       $questions = Questions::orderByDesc('n_false')->Paginate(10);
+       $hqcount = HQuestions::count();
+       $qdor = AdminConfigs::where('name' , 'dor')->first()->config;
        return view('admin.members.data' ,
            [
                'count' => $members,
+               'qcount' => $qcount,
+               'hqcount' => $hqcount,
+               'qdor' => $qdor,
+               'questions' => $questions,
+               'users' => $users,
            ]);
     }
 

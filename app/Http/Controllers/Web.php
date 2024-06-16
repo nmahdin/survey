@@ -81,24 +81,29 @@ class Web extends Controller
 
     public function show_questions(Request $request)
     {
-        if ($request->user()->random != null) {
-            $current_dor = AdminConfigs::where('name' , 'current_dor')->first()->config;
-            $user_dor = $request->user()->dor;
-            if ($current_dor == $user_dor) {
-                return view('member.end', ['user' => $request->user() , 'status' => $user_dor]);
-            }
-            $qustions = $request->user()->random;
-            $q = explode('.', $qustions);
-            $new_qustions = explode('.', $qustions);
-            unset($new_qustions[0]);
-            $new_qustions = join('.', $new_qustions);
-            User::find($request->user()->id)->update(['random' => $new_qustions]);
+        if (Auth::check() & AdminConfigs::where('name' , 'on_off')->first()->config) {
+            if (AdminConfigs::where('name' , 'current_dor')->first()->config !== 0) {
+                if ($request->user()->random != null) {
+                    $current_dor = AdminConfigs::where('name' , 'current_dor')->first()->config;
+                    $user_dor = $request->user()->dor;
+                    if ($current_dor == $user_dor) {
+                        return view('member.end', ['user' => $request->user() , 'status' => $user_dor]);
+                    }
+                    $qustions = $request->user()->random;
+                    $q = explode('.', $qustions);
+                    $new_qustions = explode('.', $qustions);
+                    unset($new_qustions[0]);
+                    $new_qustions = join('.', $new_qustions);
+                    User::find($request->user()->id)->update(['random' => $new_qustions]);
 
-            $q = Questions::find($q[0]);
-            return view('member.showQuestions', ['question' => $q]);
-        } else {
-            return view('member.end', ['user' => $request->user() , 'status' => 'end']);
+                    $q = Questions::find($q[0]);
+                    return view('member.showQuestions', ['question' => $q]);
+                } else {
+                    return view('member.end', ['user' => $request->user() , 'status' => 'end']);
+                }
+            }
         }
+       return redirect(route('welcome2'));
 
     }
 
@@ -131,7 +136,7 @@ class Web extends Controller
             Questions::find($request->id)->update(['n_true' => $qn_true]);
             return view('member.result', ['question' => Questions::find($request->id), 'an' => $request->gozine, 'true' => 1, 'score' => $score]);
 
-        } else {
+        } elseif ($request->gozine !== null) {
             // پاسخ نادرست
             $user = User::find($request->user()->id);
             $n_true = $user->n_true;
@@ -145,6 +150,10 @@ class Web extends Controller
             ]);
             $qn_false = $qn_false + 1;
             Questions::find($request->id)->update(['n_true' => $qn_false]);
+            return view('member.result', ['question' => Questions::find($request->id), 'an' => $request->gozine, 'true' => 0, 'score' => $score]);
+        } else {
+            // بدون جواب
+            $score = $request->user()->score;
             return view('member.result', ['question' => Questions::find($request->id), 'an' => $request->gozine, 'true' => 0, 'score' => $score]);
         }
 

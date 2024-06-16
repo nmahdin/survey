@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="card bg-lighter">
-                        <div class="card-header">سوال رندم</div>
+{{--                        <div class="card-header">سوال رندم</div>--}}
                         <div class="card-inner">
                             <h5 class="card-title">{{ $question->text }}</h5>
                             <br>

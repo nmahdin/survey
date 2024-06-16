@@ -65,7 +65,7 @@ if ($true) {
                         </div>
                     </div>
                     <div class="card bg-lighter">
-                        <div class="card-header">نتیجه: <?php if($true) { echo 'پاسخ شما درست بود';}else {echo 'پاسخ شما نادرست بود'; } ?></div>
+{{--                        <div class="card-header">نتیجه: <?php if($true) { echo 'پاسخ شما درست بود';}else {echo 'پاسخ شما نادرست بود'; } ?></div>--}}
                         <div class="card-inner">
                             <h5 class="card-title">{{ $question->text }}</h5>
                             <br>
@@ -87,8 +87,10 @@ if ($true) {
                                         <span style=" padding: 3px; {{ true(4,$an , $question->true) }}" class="">{{ $question->g4 }}</span>
                                     {{ text_result(4,$an , $question->true) }}
                                 </div>
-
-                                <br>
+                                <p style="color: rgb(167 187 197) !important;">
+                                    امتیاز شما تا این لحظه:
+                                    {{ $score }}
+                                </p>
                                 <div class="form-group">
                                     <a href="{{ route('show.questions') }}" class="btn btn-lg btn-primary">ادامه</a>
                                 </div>
