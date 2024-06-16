@@ -59,7 +59,7 @@ function config2($con)
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="group_name" class="form-label">نام گروه</label>
+                                    <label for="group_name" class="form-label">نام گروه:</label>
                                     <span class="form-note">این نام در همه جای برنامه نمایش داده می شود.</span>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@ function config2($con)
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="mosabeghe_name" class="form-label">نام مسابقه</label>
+                                    <label for="mosabeghe_name" class="form-label">نام مسابقه:</label>
                                     <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>
                                 </div>
                             </div>
@@ -103,17 +103,17 @@ function config2($con)
                             </span>
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="welcome_text" class="form-label">متن خوش آمد گویی</label>
+                                    <label for="welcome_text" class="form-label">متن خوش آمد گویی:</label>
 {{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
                             <div class="col-lg-8">
                                 <div class="form-group">
                                     <div class="form-control-wrap number-spinner-wrap">
-                                        <input id="welcome_text" type="text"
+                                        <textarea id="welcome_text" type="text"
                                                class="form-control @error('welcome_text') error @enderror "
                                                placeholder="نام مسابقه" value="{{ config2('welcome_text') }}"
-                                               name="welcome_text">
+                                                  name="welcome_text"></textarea>
                                         @error('welcome_text')
                                         <span id="fv-message-error" class="invalid">{{ $message }}</span>
                                         @enderror
@@ -123,17 +123,16 @@ function config2($con)
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="welcome_text_off" class="form-label">متن موقع خاموش بودن برنامه</label>
+                                    <label for="welcome_text_off" class="form-label">متن موقع خاموش بودن برنامه:</label>
                                     {{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
                             <div class="col-lg-8">
                                 <div class="form-group">
                                     <div class="form-control-wrap number-spinner-wrap">
-                                        <input id="welcome_text_off" type="text"
+                                        <textarea id="welcome_text_off" type="text"
                                                class="form-control @error('welcome_text_off') error @enderror "
-                                               placeholder="برنامه فعال نمی باشد!" value="{{ config2('welcome_text_off') }}"
-                                               name="welcome_text_off">
+                                               placeholder="برنامه فعال نمی باشد!" value="{{ config2('welcome_text_off') }}" name="welcome_text_off"></textarea>
                                         @error('welcome_text_off')
                                         <span id="fv-message-error" class="invalid">{{ $message }}</span>
                                         @enderror
@@ -143,7 +142,7 @@ function config2($con)
 
                             <div class="col-lg-3">
                                 <div class="form-group">
-                                    <label for="welcome_btn" class="form-label">متن دکمه برای ورود به مسابقه</label>
+                                    <label for="welcome_btn" class="form-label">متن دکمه برای ورود به مسابقه:</label>
 {{--                                    <span class="form-note">به عنوان نام مسابقه نمایش داده می شود.</span>--}}
                                 </div>
                             </div>
