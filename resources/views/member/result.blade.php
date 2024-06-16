@@ -28,6 +28,26 @@
             }
         }
     }
+
+if ($true) {
+    function text_result($g , $an , $t){
+        if ($g == $an) {
+            echo '<span class="text-teal p-1">پاسخ شما درست بود.</span>';
+        } else {
+            echo '';
+        }
+    }
+} else {
+    function text_result($g , $an , $t){
+        if ($g == $an) {
+            echo '<span class="text-danger p-1">پاسخ شما نادرست بود.</span>';
+        } elseif ($g == $t) {
+            echo '<span class="text-gray p-1">گزینه صحیح</span>';
+        } else {
+            echo '';
+        }
+    }
+}
 ?>
 
 
@@ -49,16 +69,21 @@
                                 @csrf
                                 <div class="form-group">
                                         <span style=" padding: 3px; {{ true(1,$an , $question->true) }}" class="">{{ $question->g1 }}</span>
+                                    {{ text_result(1,$an , $question->true) }}
                                 </div>
                                 <div class="form-group">
                                         <span style=" padding: 3px; {{ true(2,$an , $question->true) }}" class="">{{ $question->g2 }}</span>
+                                    {{ text_result(2,$an , $question->true) }}
                                 </div>
                                 <div class="form-group">
                                         <span style=" padding: 3px; {{ true(3,$an , $question->true) }}" class="">{{ $question->g3 }}</span>
+                                    {{ text_result(3,$an , $question->true) }}
                                 </div>
                                 <div class="form-group">
                                         <span style=" padding: 3px; {{ true(4,$an , $question->true) }}" class="">{{ $question->g4 }}</span>
+                                    {{ text_result(4,$an , $question->true) }}
                                 </div>
+
                                 <br>
                                 <div class="form-group">
                                     <a href="{{ route('show.questions') }}" class="btn btn-lg btn-primary">ادامه</a>

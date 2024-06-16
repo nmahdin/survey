@@ -48,14 +48,13 @@ $n = Questions::count()
                         <div class="card-head">
                             <h5 class="card-title">تنظیمات</h5>
                         </div>
-                        @if($on_off)
+                        @if($on_off & $current_dor)
                             <p class="text-danger">هنگام فعال بودن مسابقه امکان تغییر وجود ندارد.</p>
                             @if($dor != 0)
                                 <h5 class="bg-info-dim text-info" style="width: 15%; padding: 7px; border-radius: 7px;">تعداد دور ها: {{ ceil($n / $dor) }}</h5>
                             @endif
                         <br>
                             <h6>تعداد سوالات در هر دور: {{ $dor }}</h6>
-
 
                         @else
                             <form action="{{ route('config_question') }}" class="gy-3" method="post">

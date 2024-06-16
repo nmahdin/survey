@@ -20,9 +20,10 @@ class Admin extends Controller
    }
 
     public function config_question() {
-       $on_off = AdminConfigs::where('name' , 'on_off')->first();
+       $on_off = AdminConfigs::where('name' , 'on_off')->first()->config;
+       $current_dor = AdminConfigs::where('name' , 'current_dor')->first()->config;
        $dor = AdminConfigs::where('name', 'dor')->first();
-        return view('admin.config.question' , ['dor' => $dor->config , 'on_off' => $on_off]);
+        return view('admin.config.question' , ['dor' => $dor->config , 'on_off' => $on_off , 'current_dor' => $current_dor]);
     }
 
     public function config_question_update(Request $request) {
@@ -33,12 +34,12 @@ class Admin extends Controller
 
         if(AdminConfigs::where('name', 'dor')->update(['config' => request('dor')])) {
             AdminConfigs::where('name', 'current_dor')->update(['config' => '0']);
-            return view('admin.config.question', ['dor' => request('dor')]);
+            return redirect(route('config_question'));
         } else {
             AdminConfigs::updateOrCreate(
                 ['name' => 'dor', 'config' => request('dor')]
             );
-            return view('admin.config.question' , ['dor' => request('dor')]);
+            return redirect(route('config_question'));
         }
 
     }
