@@ -52,10 +52,13 @@ class Web extends Controller
 
     public function welcome2()
     {
-        if (Auth::check()){
-            return redirect(route('welcome3'));
+        if (AdminConfigs::where('name' , 'app')->first()->config) {
+            if (Auth::check()){
+                return redirect(route('welcome3'));
+            }
+            return view('welcome2');
         }
-        return view('welcome2');
+        return view('app-off');
     }
 
     public function welcome3()
