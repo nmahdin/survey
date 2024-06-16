@@ -18,22 +18,18 @@ $n = Questions::count()
                 <div class="nk-block-head">
                     <div class="nk-block-between g-3">
                         <div class="nk-block-head-content">
-                            <h3 class="nk-block-title page-title"><em class="icon ni ni-square-fill-c ico-title"></em>مدریت
+                            <h3 class="nk-block-title page-title">
+                                مدریت
                                 فعال سازی دور ها</h3>
                             <div class="nk-block-des text-soft">
                                 @if($dor != 0)
                                     <p>تعداد دور ها: {{ ceil($n / $dor) }}</p>
                                 @endif
-                                <p></p>
                             </div>
                         </div>
                         <div class="nk-block-head-content">
-                            <a id="back" href="{{ route('question.all') }}" onclick="loading('back')"
-                               class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
-                                    class="icon ni ni-arrow-left"></em><span>بازگشت</span></a>
-                            <a href="html/invoice-list.html"
-                               class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
-                                    class="icon ni ni-arrow-left"></em></a>
+                            <a id="back" href="{{ route('admin.dashboard') }}" onclick="loading('back')"
+                               class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><span>داشبورد</span><em class="icon ni ni-back-ios"></em></a>
                         </div>
                     </div>
                 </div>
@@ -41,7 +37,6 @@ $n = Questions::count()
                 <div class="nk-block">
                     <div class="invoice">
                         <div class="card invoice-wrap">
-
                             <h4>فعال سازی یا غیر فعال سازی دور ها:</h4>
                             <br>
                             <form id="edit-q1" action="{{ route('question.config.p') }}" method="post" class="">

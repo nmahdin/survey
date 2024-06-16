@@ -37,9 +37,9 @@
                                     <ul class="nk-block-tools g-3">
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
-                                                <a id="new" href="{{ route('members.all') }}"
-                                                   onclick="loading('new')" class="btn btn-icon btn-primary btnplus">مشاهده
-                                                    لیست
+                                                <a id="new" href="{{ route('config.all') }}"
+                                                   onclick="loading('new')" class="btn btn-icon btn-primary btnplus">
+                                                    تنظیمات
                                                     <em class="icon ni ni-back-ios"></em></a>
                                             </div>
                                         </li>
@@ -142,52 +142,61 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-tranx">
-                                    <thead class="bg-light bg-opacity-75">
-                                    <tr class="tb-tnx-head">
-                                        <th class="tb-tnx-id"><span class="">نام</span></th>
-                                        <th class="tb-tnx-info">
+                                @if($count == 0)
+                                    <div class="nk-tb-list nk-tb-ulist p-3">
+                                        <div class="alert alert-fill alert-warning alert-icon">
+                                            <em class="icon ni ni-alert-circle"></em>
+                                            <strong>شرکت کننده ای وجود ندارد!</strong>
+                                        </div>
+                                    </div>
+                                @else
+                                    <table class="table table-tranx">
+                                        <thead class="bg-light bg-opacity-75">
+                                        <tr class="tb-tnx-head">
+                                            <th class="tb-tnx-id"><span class="">نام</span></th>
+                                            <th class="tb-tnx-info">
                                                             <span class="tb-tnx-desc d-none d-sm-inline-block">
                                                                 <span>شماره موبایل</span>
                                                             </span>
-                                            <span class="tb-tnx-date d-md-inline-block d-none">
+                                                <span class="tb-tnx-date d-md-inline-block d-none">
                                                 <span class="d-none d-md-block">
                                                     <span>تعداد پاسخ های درست</span>
                                                     <span>تعداد پاسخ های نادرست</span>
 
                                                 </span>
                                             </span>
-                                        </th>
-                                        <th class="tb-tnx-info">
+                                            </th>
+                                            <th class="tb-tnx-info">
                                             <span class="tb-tnx-date d-md-inline-block d-none" >
                                                     <span>امتیاز</span>
                                             </span>
-                                        </th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    @foreach($users as $u)
-                                        <tr class="tb-tnx-item">
-                                            <td class="tb-tnx-id">
-                                                <span class="title">{{ $u->name }}</span>
-                                            </td>
-                                            <td class="tb-tnx-info">
-                                                <div class="tb-tnx-desc">
-                                                    <span class="title">{{ $u->number }}</span>
-                                                </div>
-                                                <div class="tb-tnx-date">
-                                                    <span class="date">{{ $u->n_true }}</span>
-                                                    <span class="date">{{ $u->n_false }}</span>
-                                                </div>
-                                            </td>
-                                            <td class="tb-tnx-info">
-                                                <span class="bg-dark-dim" style="text-align: center; width: 30px; border-radius: 7px; padding: 4px">{{ $u->score }}</span>
-                                            </td>
+                                            </th>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach($users as $u)
+                                            <tr class="tb-tnx-item">
+                                                <td class="tb-tnx-id">
+                                                    <span class="title">{{ $u->name }}</span>
+                                                </td>
+                                                <td class="tb-tnx-info">
+                                                    <div class="tb-tnx-desc">
+                                                        <span class="title">{{ $u->number }}</span>
+                                                    </div>
+                                                    <div class="tb-tnx-date">
+                                                        <span class="date">{{ $u->n_true }}</span>
+                                                        <span class="date">{{ $u->n_false }}</span>
+                                                    </div>
+                                                </td>
+                                                <td class="tb-tnx-info">
+                                                    <span class="bg-dark-dim" style="text-align: center; width: 30px; border-radius: 7px; padding: 4px">{{ $u->score }}</span>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
                             </div>
                         </div>
                         <div class="col-xxl-12 col-md-6">
@@ -199,43 +208,52 @@
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-tranx">
-                                    <thead class="bg-light bg-opacity-75">
-                                    <tr class="tb-tnx-head">
-                                        <th class="tb-tnx-id"><span class="">#</span></th>
-                                        <th class="tb-tnx-info">
+                                @if($qcount == 0)
+                                    <div class="nk-tb-list nk-tb-ulist p-3">
+                                        <div class="alert alert-fill alert-warning alert-icon">
+                                            <em class="icon ni ni-alert-circle"></em>
+                                            <strong>سوالی وجود ندارد!</strong>
+                                        </div>
+                                    </div>
+                                @else
+                                    <table class="table table-tranx">
+                                        <thead class="bg-light bg-opacity-75">
+                                        <tr class="tb-tnx-head">
+                                            <th class="tb-tnx-id"><span class="">#</span></th>
+                                            <th class="tb-tnx-info">
                                                             <span class="tb-tnx-desc d-none d-sm-inline-block">
                                                                 <span>صورت سوال</span>
                                                             </span>
-                                            <span class="tb-tnx-date d-md-inline-block d-none">
+                                                <span class="tb-tnx-date d-md-inline-block d-none">
                                                 <span class="d-none d-md-block">
                                                     <span>تعداد پاسخ های درست</span>
                                                     <span>تعداد پاسخ های نادرست</span>
                                                 </span>
                                             </span>
-                                        </th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    @foreach($questions as $q)
-                                        <tr class="tb-tnx-item">
-                                            <td class="tb-tnx-id">
-                                                <a class="text-primary" href="/questions/detail/{{ $q->id }}"><span>{{ $q->number }}</span></a>
-                                            </td>
-                                            <td class="tb-tnx-info">
-                                                <div class="tb-tnx-desc">
-                                                    <span class="title">{{ $q->text }}</span>
-                                                </div>
-                                                <div class="tb-tnx-date">
-                                                    <span class="date">{{ $q->n_true }}</span>
-                                                    <span class="date">{{ $q->n_false }}</span>
-                                                </div>
-                                            </td>
+                                            </th>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach($questions as $q)
+                                            <tr class="tb-tnx-item">
+                                                <td class="tb-tnx-id">
+                                                    <a class="text-primary" href="/questions/detail/{{ $q->id }}"><span>{{ $q->number }}</span></a>
+                                                </td>
+                                                <td class="tb-tnx-info">
+                                                    <div class="tb-tnx-desc">
+                                                        <span class="title">{{ $q->text }}</span>
+                                                    </div>
+                                                    <div class="tb-tnx-date">
+                                                        <span class="date">{{ $q->n_true }}</span>
+                                                        <span class="date">{{ $q->n_false }}</span>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
                             </div>
                             <!-- .card -->
                         </div>

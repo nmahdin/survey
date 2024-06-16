@@ -21,16 +21,23 @@
     <div class="nk-main">
         <!-- sidebar @s -->
         <div class="nk-sidebar nk-sidebar-fixed is-light" data-content="sidebarMenu">
-            <div class="nk-sidebar-element nk-sidebar-head">
-                <div class="nk-sidebar-brand">
-                    <a href="html/index.html" class="logo-link nk-sidebar-logo">
-                        <img class="logo-light logo-img" src="/assets/images/logo.jpg" srcset="./images/logo2x.png 2x"
-                             alt="لوگو"/>
-                        <img class="logo-dark logo-img" src="/assets/images/logo.jpg"
-                             srcset="./images/logo-dark2x.png 2x" alt="لوگوی تاریک"/>
-                        <img class="logo-small logo-img logo-img-small" src="/assets/images/logo.jpg"
-                             srcset="./images/logo-small2x.png 2x" alt="لوگوی کوچک"/>
-                    </a>
+            <div class="nk-sidebar-element nk-sidebar-head" style="text-align: center;">
+                <div class="nk-sidebar-brand" >
+<br>
+                        <h4  class="text-dark pt-1">
+                            <span class="nk-menu-icon text-dark"><em class="icon ni ni-layout-fill"></em></span>
+                            <span class="">نب لاین</span>
+                        </h4>
+
+                    <br>
+{{--                    <a href="html/index.html" class="logo-link nk-sidebar-logo">--}}
+{{--                        <img class="logo-light logo-img" src="/assets/images/logo.jpg" srcset="./images/logo2x.png 2x"--}}
+{{--                             alt="لوگو"/>--}}
+{{--                        <img class="logo-dark logo-img" src="/assets/images/logo.jpg"--}}
+{{--                             srcset="./images/logo-dark2x.png 2x" alt="لوگوی تاریک"/>--}}
+{{--                        <img class="logo-small logo-img logo-img-small" src="/assets/images/logo.jpg"--}}
+{{--                             srcset="./images/logo-small2x.png 2x" alt="لوگوی کوچک"/>--}}
+{{--                    </a>--}}
                 </div>
                 <div class="nk-menu-trigger me-n2">
                     <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em
@@ -43,26 +50,38 @@
                     <div class="nk-sidebar-menu" data-simplebar>
                         <ul class="nk-menu">
                             <!-- کاربران -->
-                            <li class="nk-menu-heading">
-                                <h6 class="overline-title text-primary-alt">شرکت کنندگان</h6>
-                            </li>
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-line-chart"></em></span>
-                                    <span class="nk-menu-text">آمار شرکت کنندگان</span>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('admin.dashboard') }}" class="nk-menu-link">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-dashboard-fill"></em></span>
+                                    <span class="nk-menu-text">داشبورد</span>
                                 </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="{{ route('members.all') }}" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست شرکت کنندگان</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="{{ route('members.data') }}" class="nk-menu-link"><span
-                                                class="nk-menu-text">آمار کلی</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
                             </li>
+                            <li class="nk-menu-item">
+                                <a href="{{ route('members.all') }}" class="nk-menu-link">
+                                    <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
+                                    <span class="nk-menu-text">لیست شرکت کنندگان</span>
+                                </a>
+                            </li>
+{{--                            <li class="nk-menu-heading">--}}
+{{--                                <h6 class="overline-title text-primary-alt">شرکت کنندگان</h6>--}}
+{{--                            </li>--}}
+{{--                            <li class="nk-menu-item has-sub">--}}
+{{--                                <a href="#" class="nk-menu-link nk-menu-toggle">--}}
+{{--                                    <span class="nk-menu-icon"><em class="icon ni ni-line-chart"></em></span>--}}
+{{--                                    <span class="nk-menu-text">آمار شرکت کنندگان</span>--}}
+{{--                                </a>--}}
+{{--                                <ul class="nk-menu-sub">--}}
+{{--                                    <li class="nk-menu-item">--}}
+{{--                                        <a href="{{ route('members.all') }}" class="nk-menu-link"><span--}}
+{{--                                                class="nk-menu-text">لیست شرکت کنندگان</span></a>--}}
+{{--                                    </li>--}}
+{{--                                    <li class="nk-menu-item">--}}
+{{--                                        <a href="{{ route('members.data') }}" class="nk-menu-link"><span--}}
+{{--                                                class="nk-menu-text">آمار کلی</span></a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
+{{--                                <!-- .nk-menu-sub -->--}}
+{{--                            </li>--}}
                             <!-- سوالات -->
                             <li class="nk-menu-heading">
                                 <h6 class="overline-title text-primary-alt">سوالات</h6>
@@ -172,36 +191,42 @@
                                 <!-- Menu -->
                                 <ul class="nk-menu nk-menu-main">
                                     <!-- لینک های نوار بالا -->
-                                    <li class="nk-menu-item has-sub">
-                                        <a href="#" class="nk-menu-link nk-menu-toggle">
-                                            <span class="nk-menu-text">دسترسی سریع</span>
+{{--                                    <li class="nk-menu-item has-sub">--}}
+{{--                                        <a href="#" class="nk-menu-link nk-menu-toggle">--}}
+{{--                                            <span class="nk-menu-text">دسترسی سریع</span>--}}
+{{--                                        </a>--}}
+{{--                                        <ul class="nk-menu-sub">--}}
+{{--                                            <li class="nk-menu-item">--}}
+{{--                                                <a href="#" class="nk-menu-link">--}}
+{{--                                                    <span class="nk-menu-text">مشاهده لیست پاسخ دهنده ها</span>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                            <!-- .nk-menu-item -->--}}
+{{--                                            <li class="nk-menu-item">--}}
+{{--                                                <a href="{{ route('question.all') }}" class="nk-menu-link">--}}
+{{--                                                    <span class="nk-menu-text">نمایش سوالات</span>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                            <!-- .nk-menu-item -->--}}
+{{--                                            <li class="nk-menu-item">--}}
+{{--                                                <a href="{{ route('question.creat') }}" class="nk-menu-link">--}}
+{{--                                                    <span class="nk-menu-text">افزودن سوال</span>--}}
+{{--                                                </a>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                        <!-- .nk-menu-sub -->--}}
+{{--                                    </li>--}}
+                                    <li class="nk-menu-item">
+                                        <a href="{{ route('question.creat') }}" class="nk-menu-link">
+                                            <span class="nk-menu-text">افزودن سوال</span>
                                         </a>
-                                        <ul class="nk-menu-sub">
-                                            <li class="nk-menu-item">
-                                                <a href="#" class="nk-menu-link">
-                                                    <span class="nk-menu-text">مشاهده لیست پاسخ دهنده ها</span>
-                                                </a>
-                                            </li>
-                                            <!-- .nk-menu-item -->
-                                            <li class="nk-menu-item">
-                                                <a href="{{ route('question.all') }}" class="nk-menu-link">
-                                                    <span class="nk-menu-text">نمایش سوالات</span>
-                                                </a>
-                                            </li>
-                                            <!-- .nk-menu-item -->
-                                            <li class="nk-menu-item">
-                                                <a href="{{ route('question.creat') }}" class="nk-menu-link">
-                                                    <span class="nk-menu-text">افزودن سوال</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <!-- .nk-menu-sub -->
                                     </li>
                                     <li class="nk-menu-item">
-                                        <a href="html/components.html" class="nk-menu-link">
-                                            <span class="nk-menu-text">ورود به عنوان پاسخ دهنده</span>
+                                        <a href="{{ route('config.all') }}" class="nk-menu-link">
+                                            <span class="nk-menu-text">تنظیمات عمومی</span>
                                         </a>
                                     </li>
+
                                     <!-- .nk-menu-item -->
                                 </ul>
                                 <!-- Menu -->

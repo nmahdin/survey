@@ -32,8 +32,8 @@ function config2($con)
                                     <li class="nk-block-tools-opt">
                                         <div class="drodown">
                                             <a id="new" href="{{ route('admin.dashboard') }}" onclick="loading('new')"
-                                               class="btn btn-icon btn-primary btnplus">داشتبور<em
-                                                    class="icon ni ni-plus"></em></a>
+                                               class="btn btn-icon btn-primary btnplus">داشبور
+                                                <em class="icon ni ni-back-ios"></em></a>
                                         </div>
                                     </li>
                                 </ul>

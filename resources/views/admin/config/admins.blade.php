@@ -94,14 +94,14 @@ $n = User::where('admin', 1)->count();
                                             </div>
                                             <div class="nk-tb-col nk-tb-col-tools">
                                                 <ul class="nk-tb-actions gx-1">
-                                                    <li class="nk-tb-action-hidden">
-                                                        <a href="/admin/questions/detail/{{ $u->id }}"
-                                                           class="btn btn-trigger btn-icon" data-bs-toggle="tooltip"
-                                                           data-bs-placement="top" aria-label="مشاهده جزئیات"
-                                                           data-bs-original-title="مشاهده جزئیات">
-                                                            <em class="icon ni ni-eye-fill"></em>
-                                                        </a>
-                                                    </li>
+{{--                                                    <li class="nk-tb-action-hidden">--}}
+{{--                                                        <a href="/admin/questions/detail/{{ $u->id }}"--}}
+{{--                                                           class="btn btn-trigger btn-icon" data-bs-toggle="tooltip"--}}
+{{--                                                           data-bs-placement="top" aria-label="مشاهده جزئیات"--}}
+{{--                                                           data-bs-original-title="مشاهده جزئیات">--}}
+{{--                                                            <em class="icon ni ni-eye-fill"></em>--}}
+{{--                                                        </a>--}}
+{{--                                                    </li>--}}
                                                     <li class="nk-tb-action-hidden">
                                                         <a href="{{ route('config.user' , ['user' => $u->id]) }}"
                                                            class="btn btn-trigger btn-icon" data-bs-toggle="tooltip"

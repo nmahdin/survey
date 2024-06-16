@@ -3,9 +3,7 @@
 use \App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('admin.index');
-})->name('admin.dashboard');
+Route::get('/dashboard', [Admin::class , 'data_member'])->name('admin.dashboard');
 
 Route::get('/members/all', [Admin::class , 'all_member'])->name('members.all');
 Route::get('/members/data', [Admin::class , 'data_member'])->name('members.data');

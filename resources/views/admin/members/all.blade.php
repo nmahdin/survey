@@ -48,8 +48,8 @@ $n = User::where('admin' , 0)->count()
                                     <ul class="nk-block-tools g-3">
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
-                                                <a id="new" href="#"
-                                                   onclick="loading('new')" class="btn btn-icon btn-primary btnplus">مشاهده آمار
+                                                <a id="new" href="{{ route('admin.dashboard') }}"
+                                                   onclick="loading('new')" class="btn btn-icon btn-primary btnplus">داشبورد
                                                     <em class="icon ni ni-back-ios"></em></a>
                                             </div>
                                         </li>
@@ -75,7 +75,7 @@ $n = User::where('admin' , 0)->count()
 
                                         <div class="alert alert-fill alert-warning alert-icon">
                                             <em class="icon ni ni-alert-circle"></em>
-                                            <strong>شرکت کننده ای وجود ندارد</strong>
+                                            <strong>شرکت کننده ای وجود ندارد!</strong>
                                         </div>
 
                                     @endif
