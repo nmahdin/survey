@@ -48,10 +48,11 @@ $n = User::where('admin' , 0)->count()
                                     <ul class="nk-block-tools g-3">
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
-                                                <a id="new" href="{{ route('admin.dashboard') }}"
-                                                   onclick="loading('new')" class="btn btn-icon btn-primary btnplus">داشبورد
+                                                <a id="new" href="{{ route('admin.dashboard') }}" data-bs-toggle="modal" data-bs-target="#modalDashboard"
+                                                   onclick="event.preventDefault(); document.getElementById('form12').submit();" class="btn btn-icon btn-primary fw-light btnplus">داشبورد
                                                     <em class="icon ni ni-back-ios"></em></a>
                                             </div>
+                                            <form id="form12" action="{{ route('admin.dashboard') }}" class="d-none"></form>
                                         </li>
                                     </ul>
                                 </div>
@@ -158,7 +159,7 @@ $n = User::where('admin' , 0)->count()
         </div>
     </div>
 
-
+    <x-admin.modal id="modalDashboard" class="modal-body-md">در حال رفتن به داشبورد ...</x-admin.modal>
 
 @endsection
 

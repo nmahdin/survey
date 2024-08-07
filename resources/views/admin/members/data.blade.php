@@ -37,11 +37,12 @@
                                     <ul class="nk-block-tools g-3">
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
-                                                <a id="new" href="{{ route('config.all') }}"
-                                                   onclick="loading('new')" class="btn btn-icon btn-primary btnplus">
+                                                <a id="new" href="{{ route('config.all') }}" data-bs-toggle="modal" data-bs-target="#modalSettings"
+                                                   onclick="event.preventDefault(); document.getElementById('form12').submit();" class="btn btn-icon btn-primary fw-light btnplus">
                                                     تنظیمات
                                                     <em class="icon ni ni-back-ios"></em></a>
                                             </div>
+                                            <form id="form12" action="{{ route('config.all') }}" class="d-none"></form>
                                         </li>
                                     </ul>
                                 </div>
@@ -265,7 +266,7 @@
         </div>
     </div>
 
-
+    <x-admin.modal id="modalSettings" class="modal-body-md">در حال رفتن به صفحه تنظیمات برنامه ...</x-admin.modal>
 
 @endsection
 

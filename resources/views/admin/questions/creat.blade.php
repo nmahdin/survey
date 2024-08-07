@@ -60,13 +60,15 @@ function check2() {
 
                 </div>
                 <div class="nk-block-head-content">
-                    <a id="back" onclick="loading('back')" href="{{ route('question.all') }}"
+                    <a id="back" data-bs-toggle="modal" data-bs-target="#modalCreate"
+                       onclick="event.preventDefault(); document.getElementById('form12').submit();" href="{{ route('question.all') }}"
                        class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em
                             class="icon ni ni-arrow-left"></em><span>بازگشت</span></a>
                     <a href="html/invoice-list.html"
                        class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em
                             class="icon ni ni-arrow-left"></em></a>
                 </div>
+                <form id="form12" action="{{ route('question.all') }}" class="d-none"></form>
             </div>
         </div>
         <!-- .nk-block-head -->

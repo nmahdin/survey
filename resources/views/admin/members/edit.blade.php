@@ -27,8 +27,10 @@ $n = Questions::count()
                                     <ul class="nk-block-tools g-3">
                                         <li class="nk-block-tools-opt">
                                             <div class="drodown">
-                                                <a id="new" href="{{ route('member.all') }}" onclick="loading('new')" class="btn btn-icon btn-info btnplus">بازگشت<em class="icon ni ni-back-ios"></em></a>
+                                                <a id="new" href="{{ route('member.all') }}" data-bs-toggle="modal" data-bs-target="#modalList"
+                                                   onclick="event.preventDefault(); document.getElementById('form12').submit();" class="btn btn-icon btn-info btnplus">بازگشت<em class="icon ni ni-back-ios"></em></a>
                                             </div>
+                                            <form id="form12" action="{{ route('member.all') }}" class="d-none"></form>
                                         </li>
                                     </ul>
                                 </div>
@@ -81,7 +83,7 @@ $n = Questions::count()
         </div>
     </div>
 
-
+    <x-admin.modal id="modalList" class="modal-body-md">در حال رفتن به لیست شرکت کنندگان ...</x-admin.modal>
 @endsection
 
 
