@@ -12,6 +12,7 @@
     <link id="skin-default" rel="stylesheet" href="/assets/css/mystyle.css"/>
     <!-- Page Title  -->
     <title>@yield('title') | چشم انتظار</title>
+    @livewireStyles
 </head>
 
 <body class="has-rtl nk-body ui-rounder has-sidebar" dir="rtl">
@@ -330,7 +331,7 @@
 <script src="/assets/js/libs/tagify.js"></script>
 <script src="./assets/js/libs/datatable-btns.js"></script>
 
-
+@livewireScripts
 </body>
 
 @yield('script')

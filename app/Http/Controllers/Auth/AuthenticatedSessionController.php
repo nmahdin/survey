@@ -53,7 +53,9 @@ class AuthenticatedSessionController extends Controller
             if (Questions::count() == 0) {
                 $random = 0;
             } else {
-                $random = Questions::all()->pluck('id')->shuffle()->implode('.');
+//                $random = Questions::all()->pluck('id')->shuffle()->implode('.');
+                $random = 0;
+//                dd($random);
             }
             $user = User::create([
                 'name' => $request->name,
